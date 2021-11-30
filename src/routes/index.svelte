@@ -3,11 +3,7 @@
 </script>
 
 <script lang="ts">
-	let query: string = 'a.i. machine learning';
-
-	const handleSubmit = () => {
-		location.href = `/search?q=${query}`;
-	};
+	import Q from '$lib/q.svelte';
 </script>
 
 <svelte:head>
@@ -17,10 +13,7 @@
 <section>
 	<h1>QuickSearch</h1>
 	<p>...</p>
-	<form on:submit|preventDefault={handleSubmit}>
-		<input type="text" placeholder="Search" bind:value={query} />
-		<button type="submit">Search</button>
-	</form>
+	<Q query={'a.i. machine learning'} />
 </section>
 
 <style>
@@ -28,11 +21,6 @@
 		display: grid;
 	}
 
-	form {
-		display: grid;
-		grid-template-columns: auto 5em;
-		column-gap: 1em;
-	}
 	h1 {
 		width: 100%;
 	}

@@ -40,6 +40,7 @@
 </script>
 
 <script lang="ts">
+	import Q from '$lib/q.svelte';
 	import moment from 'moment';
 	export let q: string;
 	export let posts: post[];
@@ -50,6 +51,7 @@
 </svelte:head>
 
 <section>
+	<Q query={q} />
 	{#if posts.length}
 		<h2>Search results for "{q}"</h2>
 		<div id="results">
@@ -71,17 +73,19 @@
 <style>
 	#results > .item {
 		display: grid;
-		grid-template-columns: auto 5em auto;
+		grid-template-columns: max-content max-content 1fr;
+		column-gap: 1em;
 		padding: 0.75rem 0;
 		row-gap: 0.5rem;
 	}
 
 	#results > .item > * {
 		align-self: center;
-		justify-self: center;
+		justify-self: left;
 	}
 	#results > .item h3 {
 		margin: 0;
+		max-width: 60vw;
 	}
 	#results > .item > time {
 		font-size: 0.7rem;
