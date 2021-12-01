@@ -94,6 +94,14 @@
 </section>
 
 <style>
+	h2 {
+		color: white;
+	}
+
+	time {
+		color: #c0c0c096;
+	}
+
 	#results > .item {
 		display: grid;
 		grid-template-columns: max-content max-content 1fr;
@@ -117,6 +125,7 @@
 		grid-row: 2 / span 1;
 		grid-column: 1 / span 3;
 		margin: 0;
+		color: #f0f0f0fb;
 	}
 
 	#results > .item > a.url {
@@ -128,5 +137,9 @@
 	#pages {
 		display: flex;
 		justify-content: space-between;
+	}
+
+	#pages > * {
+		color: #b1b1b1;
 	}
 </style>
