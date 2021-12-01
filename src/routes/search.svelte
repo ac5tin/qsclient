@@ -52,7 +52,7 @@
 	export let posts: post[];
 
 	const prettyPrint = (text: string, max: number = 100): string => {
-		return text.length > max ? text.replaceAll(/<[^>]*>/g, '').substr(0, max) + '...' : text;
+		return text.length > max ? text.replace(/<[^>]*>/g, '').substr(0, max) + '...' : text;
 	};
 </script>
 
