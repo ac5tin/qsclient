@@ -13,7 +13,7 @@
 <section>
 	<h1>QuickSearch</h1>
 	<p>...</p>
-	<Q query={'a.i. machine learning'} />
+	<Q query={'a.i. machine learning'} lang={'en'} />
 </section>
 
 <style>

@@ -33,6 +33,7 @@
 		return {
 			props: {
 				q,
+				lang,
 				posts
 			}
 		};
@@ -43,6 +44,7 @@
 	import Q from '$lib/q.svelte';
 	import moment from 'moment';
 	export let q: string;
+	export let lang: string;
 	export let posts: post[];
 </script>
 
@@ -51,7 +53,7 @@
 </svelte:head>
 
 <section>
-	<Q query={q} />
+	<Q query={q} {lang} />
 	{#if posts.length}
 		<h2>Search results for "{q}"</h2>
 		<div id="results">
