@@ -50,6 +50,10 @@
 	export let limit: number;
 	export let offset: number;
 	export let posts: post[];
+
+	const prettyPrint = (text: string, max: number = 100): string => {
+		return text.length > max ? text.replaceAll(/<[^>]*>/g, '').substr(0, max) + '...' : text;
+	};
 </script>
 
 <svelte:head>
@@ -67,7 +71,8 @@
 						<h3>{post.title}</h3>
 					</a>
 					<time>{post.timestamp ? moment(post.timestamp * 1000).fromNow() : ''}</time>
-					<p>{post.summary}</p>
+					<p>{prettyPrint(post.summary)}</p>
+					<a class="url" href={post.url} target="_blank">{prettyPrint(post.url, 200)}</a>
 				</div>
 			{/each}
 		</div>
@@ -112,6 +117,12 @@
 		grid-row: 2 / span 1;
 		grid-column: 1 / span 3;
 		margin: 0;
+	}
+
+	#results > .item > a.url {
+		font-size: 0.7rem;
+		grid-row: 3 / span 1;
+		grid-column: 1 / span 3;
 	}
 
 	#pages {
