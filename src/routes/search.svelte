@@ -34,7 +34,9 @@
 			props: {
 				q,
 				lang,
-				posts
+				posts,
+				limit,
+				offset
 			}
 		};
 	};
@@ -45,6 +47,8 @@
 	import moment from 'moment';
 	export let q: string;
 	export let lang: string;
+	export let limit: number;
+	export let offset: number;
 	export let posts: post[];
 </script>
 
@@ -53,7 +57,7 @@
 </svelte:head>
 
 <section>
-	<Q query={q} {lang} />
+	<Q query={q} {lang} {offset} />
 	{#if posts.length}
 		<h2>Search results for "{q}"</h2>
 		<div id="results">
@@ -70,6 +74,18 @@
 	{:else}
 		<p>No results found ...</p>
 	{/if}
+
+	<div id="pages">
+		{#if offset > 0}
+			<a href={`/search?q=${q}&lang=${lang}&limit=${limit}&offset=${offset - limit}`}>Previous</a>
+		{:else}
+			<p />
+		{/if}
+		<p>Page {offset / limit + 1}</p>
+		{#if posts.length == limit}
+			<a href={`/search?q=${q}&lang=${lang}&limit=${limit}&offset=${offset + limit}`}>Next</a>
+		{/if}
+	</div>
 </section>
 
 <style>
@@ -96,5 +112,10 @@
 		grid-row: 2 / span 1;
 		grid-column: 1 / span 3;
 		margin: 0;
+	}
+
+	#pages {
+		display: flex;
+		justify-content: space-between;
 	}
 </style>

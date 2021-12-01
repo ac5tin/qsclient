@@ -1,9 +1,10 @@
 <script lang="ts">
 	export let query: string;
 	export let lang: string;
+	export let offset: number;
 
 	const handleSubmit = () => {
-		location.href = `/search?q=${query}&lang=${lang}`;
+		location.href = `/search?q=${query}&lang=${lang}&offset=${offset}`;
 	};
 </script>
 
